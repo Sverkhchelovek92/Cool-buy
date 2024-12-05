@@ -1,0 +1,152 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap');
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #212f3c;
+  color: #fcf3cf;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0 5px 0;
+}
+
+.header-logo {
+  font-family: 'Sixtyfour Convergence', sans-serif;
+  font-size: 33px;
+  padding-top: 3px;
+  cursor: pointer;
+}
+
+.header-search-input {
+  width: 500px;
+  height: 30px;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.header-currency-div {
+  position: relative;
+}
+
+.header-currency-btn {
+  background-color: #212f3c;
+  cursor: pointer;
+  color: lightblue;
+  padding: 1px 5px 2px 5px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+.header-currency-btn:hover {
+  background-color: #2f4254;
+}
+
+.header-currency-dropdown {
+  list-style: none;
+  position: absolute;
+  background-color: #2f4254;
+}
+
+.header-currency-dropdown li {
+  margin: 3px 5px 3px 5px;
+  cursor: pointer;
+}
+
+.header-currency-dropdown li:hover {
+  color: lightblue;
+}
+
+.header-menu-ul {
+  list-style: none;
+  display: flex;
+  gap: 21px;
+}
+
+.header-menu-li {
+  cursor: pointer;
+}
+
+.header-menu-li:hover {
+  opacity: 0.6;
+}
+
+.main {
+  flex: 1;
+}
+
+.main-poster {
+  max-width: 1200px;
+  background-color: #7d1135;
+  height: 220px;
+  margin-top: 7px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+}
+
+.main-poster-text {
+  color: white;
+  font-size: 42px;
+}
+
+.banner-slider-swiper {
+  margin-top: 7px;
+  max-width: 1200px;
+  height: 420px;
+  border-radius: 12px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff !important;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ffffff !important;
+  opacity: 0.2 !important;
+  transition: opacity 0.3s ease;
+}
+
+.swiper-pagination-bullet-active:hover {
+  opacity: 0.7 !important;
+}
+
+footer {
+  height: 40px;
+  background-color: #212f3c;
+  color: #fcf3cf;
+}
