@@ -39,7 +39,12 @@ function BannerSlider() {
     >
       {banners.map((banner) => (
         <SwiperSlide key={banner.id}>
-          <img src={banner.src} alt={banner.alt} style={{ width: '100%' }} />
+          <img
+            src={banner.src}
+            alt={banner.alt}
+            style={{ width: '100%' }}
+            loading="lazy"
+          />
         </SwiperSlide>
       ))}
     </Swiper>

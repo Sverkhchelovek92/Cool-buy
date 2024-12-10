@@ -1,4 +1,1 @@
-## Tasks
-
-1. Day theme / Night theme
-2. Carousel in the Advertisment Poster
+## Online shop on react.js made for learning purpose
