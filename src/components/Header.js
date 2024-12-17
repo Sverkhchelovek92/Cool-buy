@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import CurrencySelector from './CurrencySelector'
 
 function Header() {
@@ -6,7 +8,9 @@ function Header() {
     <header>
       <div className="wrapper">
         <div className="header">
-          <div className="header-logo">COOL</div>
+          <div className="header-logo">
+            <Link to="/">COOL</Link>
+          </div>
 
           <form action="/search" method="GET" className="header-search-bar">
             <input
@@ -21,7 +25,9 @@ function Header() {
             <li className="header-menu-li">About Us</li>
             <li className="header-menu-li">Help</li>
             <li className="header-menu-li">Profile</li>
-            <li className="header-menu-li">Cart</li>
+            <li className="header-menu-li">
+              <Link to="/cart">Cart</Link>
+            </li>
           </ul>
         </div>
       </div>
