@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-function Card({ product }) {
+function Card({ product, onAddToCart }) {
   const { currentCurrency } = useSelector((state) => state.currency)
 
   const exchangeRates = {
@@ -29,7 +29,9 @@ function Card({ product }) {
       <p className="card-price">
         <strong>Price:</strong> {convertedPrice} {currentCurrency}
       </p>
-      <button className="card-btn">Buy</button>
+      <button className="card-btn" onClick={() => onAddToCart(product)}>
+        Buy
+      </button>
     </div>
   )
 }
