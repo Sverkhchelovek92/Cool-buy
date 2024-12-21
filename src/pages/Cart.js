@@ -32,30 +32,54 @@ function Cart() {
 
   return (
     <div className="main">
-      <div className="cart">
-        <h2 className="cart-title">Your Cart:</h2>
-        {cartItems.length === 0 ? (
-          <p>Cart is empty</p>
-        ) : (
-          <ul className="cart-list">
-            {cartItems.map((item) => (
-              <li className="cart-item" key={item.id}>
-                {item.name} -{' '}
-                {(item.price * exchangeRates[currentCurrency]).toFixed(2)}{' '}
-                {currentCurrency} x {item.quantity}
-                <button onClick={() => handleRemove(item.id)}>Delete</button>
-              </li>
-            ))}
-          </ul>
-        )}
-        {cartItems.length > 0 && (
-          <p>
-            Total: {total.toFixed(2)} {currentCurrency}{' '}
-          </p>
-        )}
-        {cartItems.length > 0 && (
-          <button onClick={handleClear}>Clear Cart</button>
-        )}
+      <div className="wrapper">
+        <div className="cart">
+          <h2 className="cart-title">Your Cart:</h2>
+          {cartItems.length === 0 ? (
+            <p className="cart-is-empty">Cart is empty</p>
+          ) : (
+            <ul className="cart-list">
+              {cartItems.map((item) => (
+                <li className="cart-item" key={item.id}>
+                  <div className="cart-item-img-block">
+                    <img
+                      src={require(`../data/img/${item.image}`)}
+                      className="cart-item-img"
+                      alt={item.name}
+                    />
+                  </div>
+                  <div className="cart-item-info">
+                    <h3 className="cart-item-name">{item.name}</h3>
+                    <p className="cart-item-price">
+                      {(item.price * exchangeRates[currentCurrency]).toFixed(2)}{' '}
+                      {currentCurrency}
+                    </p>
+                    <p className="cart-item-quantity">
+                      Quantity: {item.quantity}
+                    </p>
+                    <button
+                      className="cart-item-btn-delete"
+                      onClick={() => handleRemove(item.id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {cartItems.length > 0 && (
+            <div className="cart-total-info">
+              <h3 className="cart-total-price">
+                Total: {total.toFixed(2)} {currentCurrency}{' '}
+              </h3>
+              <button className="cart-clear-btn" onClick={handleClear}>
+                Clear Cart
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
