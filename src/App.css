@@ -26,6 +26,10 @@ a:active {
   color: inherit;
 }
 
+button {
+  cursor: pointer;
+}
+
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -256,6 +260,15 @@ footer {
   margin-top: auto;
   margin-bottom: 4px;
   cursor: pointer;
+  padding: 5px 10px;
+  background-color: #212f3c;
+  color: lightblue;
+  border: 1px solid lightblue;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item-btn-delete:hover {
+  background-color: #2f4254;
 }
 
 .cart-total-info {
@@ -267,6 +280,28 @@ footer {
   margin-bottom: 8px;
 }
 
-.cart-btn-clear {
+.cart-clear-btn {
   cursor: pointer;
+  padding: 5px 10px;
+  background-color: #212f3c;
+  color: white;
+  border: 1px solid white;
+  transition: background-color 0.3s ease;
+}
+
+.cart-clear-btn:hover {
+  background-color: #2f4254;
+}
+
+.cart-item-btn-quantity {
+  width: 17px;
+  height: 19px;
+  font-weight: bold;
+  background-color: #212f3c;
+  color: lightblue;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item-btn-quantity:hover {
+  background-color: #2f4254;
 }

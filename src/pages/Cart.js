@@ -1,6 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearCart, removeFromCart } from '../features/cartSlice'
+import {
+  clearCart,
+  removeFromCart,
+  updateQuantity,
+} from '../features/cartSlice'
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items)
@@ -30,6 +34,18 @@ function Cart() {
     dispatch(clearCart())
   }
 
+  const handleIncrease = (id, currentQuantity) => {
+    dispatch(updateQuantity({ id, quantity: currentQuantity + 1 }))
+  }
+
+  const handleDecrease = (id, currentQuantity) => {
+    if (currentQuantity > 1) {
+      dispatch(updateQuantity({ id, quantity: currentQuantity - 1 }))
+    } else {
+      dispatch(removeFromCart(id))
+    }
+  }
+
   return (
     <div className="main">
       <div className="wrapper">
@@ -54,9 +70,24 @@ function Cart() {
                       {(item.price * exchangeRates[currentCurrency]).toFixed(2)}{' '}
                       {currentCurrency}
                     </p>
+
                     <p className="cart-item-quantity">
-                      Quantity: {item.quantity}
+                      Quantity:{' '}
+                      <button
+                        className="cart-item-btn-quantity"
+                        onClick={() => handleDecrease(item.id, item.quantity)}
+                      >
+                        -
+                      </button>{' '}
+                      {item.quantity}{' '}
+                      <button
+                        className="cart-item-btn-quantity"
+                        onClick={() => handleIncrease(item.id, item.quantity)}
+                      >
+                        +
+                      </button>
                     </p>
+
                     <button
                       className="cart-item-btn-delete"
                       onClick={() => handleRemove(item.id)}
