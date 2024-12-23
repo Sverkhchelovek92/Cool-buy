@@ -1,9 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import CurrencySelector from './CurrencySelector'
 
 function Header() {
+  const items = useSelector((state) => state.cart.items)
+
+  const totalItems = items.reduce((total, item) => total + item.quantity, 0)
+
   return (
     <header>
       <div className="wrapper">
@@ -26,7 +31,9 @@ function Header() {
             <li className="header-menu-li">Help</li>
             <li className="header-menu-li">Profile</li>
             <li className="header-menu-li">
-              <Link to="/cart">Cart</Link>
+              <Link to="/cart">
+                Cart {totalItems > 0 && ` (${totalItems})`}
+              </Link>
             </li>
           </ul>
         </div>

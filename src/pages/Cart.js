@@ -67,7 +67,11 @@ function Cart() {
                   <div className="cart-item-info">
                     <h3 className="cart-item-name">{item.name}</h3>
                     <p className="cart-item-price">
-                      {(item.price * exchangeRates[currentCurrency]).toFixed(2)}{' '}
+                      {(
+                        item.price *
+                        exchangeRates[currentCurrency] *
+                        item.quantity
+                      ).toFixed(2)}{' '}
                       {currentCurrency}
                     </p>
 
@@ -103,7 +107,7 @@ function Cart() {
           {cartItems.length > 0 && (
             <div className="cart-total-info">
               <h3 className="cart-total-price">
-                Total: {total.toFixed(2)} {currentCurrency}{' '}
+                Total: {total.toFixed(2)} {currentCurrency}
               </h3>
               <button className="cart-clear-btn" onClick={handleClear}>
                 Clear Cart
