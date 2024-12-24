@@ -6,6 +6,7 @@ import Main from './components/Main'
 import { Routes, Route } from 'react-router-dom'
 import NotFound from './pages/NotFound'
 import Cart from './pages/Cart'
+import ProductPage from './pages/ProductPage'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/notfound" element={<NotFound />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/product/:id" element={<ProductPage />} />
       </Routes>
       <Footer />
     </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function Card({ product, onAddToCart }) {
   const { currentCurrency } = useSelector((state) => state.currency)
@@ -24,7 +25,9 @@ function Card({ product, onAddToCart }) {
         />
       </div>
 
-      <h3 className="card-name">{product.name}</h3>
+      <h3 className="card-name">
+        <Link to={`/product/${product.id}`}>{product.name}</Link>
+      </h3>
       <p className="card-description">{product.description}</p>
       <p className="card-price">
         <strong>Price:</strong> {convertedPrice} {currentCurrency}
