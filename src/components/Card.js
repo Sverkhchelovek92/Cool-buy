@@ -1,15 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import exchangeRates from '../data/ExchangeRates'
 
 function Card({ product, onAddToCart }) {
   const { currentCurrency } = useSelector((state) => state.currency)
-
-  const exchangeRates = {
-    USD: 1,
-    EUR: 0.9,
-    RUB: 90,
-  }
 
   const convertedPrice = (
     product.price * exchangeRates[currentCurrency]

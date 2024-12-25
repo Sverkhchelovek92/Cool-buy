@@ -2,21 +2,13 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import ProductData from '../data/ProductData'
+import exchangeRates from '../data/ExchangeRates'
 
 function ProductPage() {
   const { id } = useParams()
   const product = ProductData.find((item) => item.id === parseInt(id))
 
-  //
   const { currentCurrency } = useSelector((state) => state.currency)
-
-  const exchangeRates = {
-    USD: 1,
-    EUR: 0.9,
-    RUB: 90,
-  }
-
-  //
 
   if (!product) {
     return (
@@ -40,7 +32,7 @@ function ProductPage() {
           <div className="product-info">
             <h1>{product.name}</h1>
             <h3>
-              {(product.price * exchangeRates[currentCurrency]).toFixed(2)}
+              {(product.price * exchangeRates[currentCurrency]).toFixed(2)}{' '}
               {currentCurrency}
             </h3>
             <p>{product.description}</p>

@@ -287,6 +287,7 @@ footer {
   color: white;
   border: 1px solid white;
   transition: background-color 0.3s ease;
+  margin-bottom: 10px;
 }
 
 .cart-clear-btn:hover {

@@ -6,16 +6,12 @@ import {
   updateQuantity,
 } from '../features/cartSlice'
 
+import exchangeRates from '../data/ExchangeRates'
+
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items)
 
   const { currentCurrency } = useSelector((state) => state.currency)
-
-  const exchangeRates = {
-    USD: 1,
-    EUR: 0.9,
-    RUB: 90,
-  }
 
   const dispatch = useDispatch()
 
