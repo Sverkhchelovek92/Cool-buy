@@ -1,14 +1,21 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import ProductData from '../data/ProductData'
 import exchangeRates from '../data/ExchangeRates'
+import { addToCart } from '../features/cartSlice'
 
 function ProductPage() {
   const { id } = useParams()
   const product = ProductData.find((item) => item.id === parseInt(id))
 
   const { currentCurrency } = useSelector((state) => state.currency)
+
+  const dispatch = useDispatch()
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product))
+  }
 
   if (!product) {
     return (
@@ -36,6 +43,12 @@ function ProductPage() {
               {currentCurrency}
             </h3>
             <p>{product.description}</p>
+            <button
+              className="card-btn"
+              onClick={() => handleAddToCart(product)}
+            >
+              Buy
+            </button>
           </div>
         </div>
       </div>

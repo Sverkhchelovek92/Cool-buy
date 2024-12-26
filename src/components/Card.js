@@ -13,11 +13,13 @@ function Card({ product, onAddToCart }) {
   return (
     <div className="card">
       <div className="card-img-block">
-        <img
-          src={require(`../data/img/${product.image}`)}
-          alt={product.name}
-          className="card-img"
-        />
+        <Link to={`/product/${product.id}`}>
+          <img
+            src={require(`../data/img/${product.image}`)}
+            alt={product.name}
+            className="card-img"
+          />
+        </Link>
       </div>
 
       <h3 className="card-name">
