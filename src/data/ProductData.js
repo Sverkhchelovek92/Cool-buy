@@ -5,6 +5,7 @@ const ProductData = [
     description: 'Video game console',
     image: '1.jpg',
     price: '69.99',
+    rating: 4.2,
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ const ProductData = [
     description: 'Video game console',
     image: '2.jpg',
     price: '129.99',
+    rating: 4.9,
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ const ProductData = [
     description: 'Video game console',
     image: '3.webp',
     price: '199.99',
+    rating: 4.2,
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ const ProductData = [
     description: 'Video game console',
     image: '4.jpeg',
     price: '369.99',
+    rating: 4.7,
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ const ProductData = [
     description: 'Handheld video game console',
     image: '5.jpg',
     price: '99.99',
+    rating: 4.5,
   },
   {
     id: 6,
@@ -40,6 +45,7 @@ const ProductData = [
     description: 'Video game console',
     image: '6.jpeg',
     price: '149.99',
+    rating: 4.2,
   },
   {
     id: 7,
@@ -47,6 +53,7 @@ const ProductData = [
     description: 'Video game console',
     image: '7.jpg',
     price: '175.99',
+    rating: 4.4,
   },
   {
     id: 8,
@@ -54,6 +61,7 @@ const ProductData = [
     description: 'Handheld video game console',
     image: '8.jpg',
     price: '299.99',
+    rating: 4.8,
   },
 ]
 

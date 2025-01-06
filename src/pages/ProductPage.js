@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import ProductData from '../data/ProductData'
 import exchangeRates from '../data/ExchangeRates'
 import { addToCart } from '../features/cartSlice'
+import { FaStar } from 'react-icons/fa'
 
 function ProductPage() {
   const { id } = useParams()
@@ -43,6 +44,9 @@ function ProductPage() {
               {currentCurrency}
             </h3>
             <p>{product.description}</p>
+            <div>
+              <FaStar color={'#ffc107'} /> {product.rating}
+            </div>
             <button
               className="card-btn"
               onClick={() => handleAddToCart(product)}
