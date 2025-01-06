@@ -5,6 +5,7 @@ import ProductData from '../data/ProductData'
 import exchangeRates from '../data/ExchangeRates'
 import { addToCart } from '../features/cartSlice'
 import { FaStar } from 'react-icons/fa'
+import { useState } from 'react'
 
 function ProductPage() {
   const { id } = useParams()
@@ -16,6 +17,13 @@ function ProductPage() {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product))
+  }
+
+  const [rating, setRating] = useState(0)
+  const [comment, setComment] = useState('')
+
+  const handleSubmit = () => {
+    console.log({ rating, comment })
   }
 
   if (!product) {
@@ -54,6 +62,28 @@ function ProductPage() {
               Buy
             </button>
           </div>
+        </div>
+        <div className="review-wrapper">
+          <h3>Leave a Review</h3>
+          <div>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <button
+                key={star}
+                onClick={() => setRating(star)}
+                style={{
+                  color: star <= rating ? '#ffc107' : '#e4e5e9',
+                }}
+              >
+                ★
+              </button>
+            ))}
+          </div>
+          <textarea
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="Write your comment"
+          />
+          <button onClick={handleSubmit}>Submit</button>
         </div>
       </div>
     </div>
