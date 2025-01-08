@@ -330,3 +330,15 @@ footer {
   flex-direction: column;
   align-items: flex-start;
 }
+
+.review-wrapper {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.star-btn {
+  background-color: #2f4254;
+}

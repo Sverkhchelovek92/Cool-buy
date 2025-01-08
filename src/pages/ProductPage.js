@@ -73,6 +73,7 @@ function ProductPage() {
                 style={{
                   color: star <= rating ? '#ffc107' : '#e4e5e9',
                 }}
+                className="star-btn"
               >
                 ★
               </button>
