@@ -342,3 +342,23 @@ footer {
 .star-btn {
   background-color: #2f4254;
 }
+
+.review-textarea {
+  width: 350px;
+  height: 75px;
+}
+
+.review-btn {
+  margin: 8px 0 4px 0;
+  padding: 7px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: #1b2731;
+  border: 1px solid white;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.review-btn:hover {
+  background-color: #364d63;
+}

@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
+
+import { addToCart } from '../features/cartSlice'
+import { addReview, deleteReview } from '../features/reviewsSlice'
+
 import ProductData from '../data/ProductData'
 import exchangeRates from '../data/ExchangeRates'
-import { addToCart } from '../features/cartSlice'
+
 import { FaStar } from 'react-icons/fa'
-import { useState } from 'react'
 
 function ProductPage() {
   const { id } = useParams()
@@ -22,8 +25,30 @@ function ProductPage() {
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
 
-  const handleSubmit = () => {
-    console.log({ rating, comment })
+  const reviews = useSelector((state) => state.reviews[product.id] || [])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if (rating === 0 || comment.trim() === '') {
+      alert('Please provide a rating and a comment.')
+      return
+    }
+
+    const newReview = {
+      rating,
+      comment,
+      date: new Date().toISOString(),
+    }
+
+    dispatch(addReview({ productId: product.id, review: newReview }))
+
+    setRating(0)
+    setComment('')
+  }
+
+  const handleDelete = (index) => {
+    dispatch(deleteReview({ productId: product.id, reviewIndex: index }))
   }
 
   if (!product) {
@@ -64,27 +89,56 @@ function ProductPage() {
           </div>
         </div>
         <div className="review-wrapper">
-          <h3>Leave a Review</h3>
-          <div>
-            {[1, 2, 3, 4, 5].map((star) => (
-              <button
-                key={star}
-                onClick={() => setRating(star)}
+          <h3>Reviews</h3>
+          {reviews.length > 0 ? (
+            reviews.map((review, index) => (
+              <div
+                key={index}
                 style={{
-                  color: star <= rating ? '#ffc107' : '#e4e5e9',
+                  border: '1px solid #ccc',
+                  padding: '10px',
+                  margin: '10px 0',
                 }}
-                className="star-btn"
               >
-                ★
-              </button>
-            ))}
-          </div>
-          <textarea
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            placeholder="Write your comment"
-          />
-          <button onClick={handleSubmit}>Submit</button>
+                <p>
+                  <strong>Rating:</strong> {review.rating} ★
+                </p>
+                <p>{review.comment}</p>
+                <small>{new Date(review.date).toLocaleDateString()}</small>
+                <button onClick={() => handleDelete(index)}>Delete</button>
+              </div>
+            ))
+          ) : (
+            <p>No reviews yet. Be the first to leave a review!</p>
+          )}
+
+          <h3>Leave a Review</h3>
+          <form onSubmit={handleSubmit}>
+            <div>
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button
+                  key={star}
+                  type="button"
+                  onClick={() => setRating(star)}
+                  style={{
+                    color: star <= rating ? '#ffc107' : '#e4e5e9',
+                  }}
+                  className="star-btn"
+                >
+                  ★
+                </button>
+              ))}
+            </div>
+            <textarea
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder="Write your review"
+              className="review-textarea"
+            />
+            <button type="submit" className="review-btn">
+              Submit
+            </button>
+          </form>
         </div>
       </div>
     </div>
