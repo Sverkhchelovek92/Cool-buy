@@ -89,31 +89,31 @@ function ProductPage() {
           </div>
         </div>
         <div className="review-wrapper">
-          <h3>Reviews</h3>
-          {reviews.length > 0 ? (
-            reviews.map((review, index) => (
-              <div
-                key={index}
-                style={{
-                  border: '1px solid #ccc',
-                  padding: '10px',
-                  margin: '10px 0',
-                }}
-              >
-                <p>
-                  <strong>Rating:</strong> {review.rating} ★
-                </p>
-                <p>{review.comment}</p>
-                <small>{new Date(review.date).toLocaleDateString()}</small>
-                <button onClick={() => handleDelete(index)}>Delete</button>
-              </div>
-            ))
-          ) : (
-            <p>No reviews yet. Be the first to leave a review!</p>
-          )}
+          <div className="review-reviews">
+            <h3>Reviews</h3>
+            {reviews.length > 0 ? (
+              reviews.map((review, index) => (
+                <div key={index} className="review-box">
+                  <p>
+                    <strong>Rating:</strong> {review.rating} ★
+                  </p>
+                  <p>{review.comment}</p>
+                  <small>{new Date(review.date).toLocaleDateString()}</small>
+                  <button
+                    className="review-box-delete-btn"
+                    onClick={() => handleDelete(index)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))
+            ) : (
+              <p>No reviews yet. Be the first to leave a review!</p>
+            )}
+          </div>
 
           <h3>Leave a Review</h3>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="review-form">
             <div>
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
